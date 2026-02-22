@@ -4,11 +4,5 @@
         "type": "FileNotFoundError",
         "message": "[Errno 2] No such file or directory: 'examples/test_scrit.py'",
         "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\NovinSoft\\Desktop\\debugging\\debugger\\cli.py\", line 22, in run_debugger\n    with open(args.script) as f:\n         ^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'examples/test_scrit.py'\n"
-    },
-    {
-        "time": "2026-02-20T21:53:38.342912",
-        "type": "FileNotFoundError",
-        "message": "[Errno 2] No such file or directory: 'examples/test_scrit.py'",
-        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\NovinSoft\\Desktop\\debugging\\debugger\\cli.py\", line 22, in run_debugger\n    with open(args.script) as f:\n         ^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'examples/test_scrit.py'\n"
     }
 ]

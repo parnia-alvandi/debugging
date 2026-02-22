@@ -1,17 +1,25 @@
 import sys
+import os
 
 class Tracer:
     def __init__(self, show_vars=False):
         self.show_vars = show_vars
+        self.base_dir = os.getcwd()        #Project folder
 
     def trace_func(self, frame, event, arg):
+        filename = frame.f_code.co_filename
+
+        if "tracer.py" in filename:        #Don't trace "tracer.py"
+            return self.trace_func
+
+        if not filename.startswith(self.base_dir):       #Only project files
+            return self.trace_func
+
         if event == "line":
             lineno = frame.f_lineno
-            filename = frame.f_code.co_filename
             print(f"[TRACE] {filename}:{lineno}")
 
             if self.show_vars:
-                # فقط متغیرهای کاربر (نه builtins)
                 local_vars = {
                     k: v for k, v in frame.f_locals.items()
                     if not k.startswith("__")
