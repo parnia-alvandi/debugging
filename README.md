@@ -1,54 +1,51 @@
 # Python Debugging Toolkit
 
-یه ابزار سبک برای دیباگ اسکریپت‌های Python — بدون هیچ dependency خارجی.
+A lightweight debugging tool for Python scripts — no external dependencies required.
 
-## امکانات
-- ردیابی خط‌به‌خط اجرا (line-by-line trace)
-- نمایش متغیرهای محلی در هر خط
-- نمایش توابع فراخوانی‌شده و مقدار بازگشتی‌شان
-- نمایش exception در لحظه رخ دادن
-- لاگ خطاها به فرمت JSON (با اطلاعات دقیق محل crash)
-- بررسی متغیرها در لحظه crash با --inspect
+## Features
+- Line-by-line execution tracing
+- Display local variables at each line
+- Show called functions and their return values
+- Display exceptions at the moment they occur
+- Log errors to JSON format (with precise crash location info)
+- Inspect variables at the moment of crash with `--inspect`
 
-## ساختار پروژه
-
+## Project Structure
 ```
 debugging/
-├── main.py                  ← نقطه ورود
+├── main.py                  ← Entry point
 ├── debugger/
-│   ├── cli.py               ← رابط خط فرمان
-│   ├── tracer.py            ← ردیابی اجرا با sys.settrace
-│   ├── logger.py            ← لاگ خطاها در JSON
-│   └── inspector.py         ← بررسی متغیرهای frame
+│   ├── cli.py               ← Command-line interface
+│   ├── tracer.py            ← Execution tracing via sys.settrace
+│   ├── logger.py            ← Log errors to JSON
+│   └── inspector.py         ← Inspect frame variables
 ├── examples/
-│   ├── buggy_program.py     ← مثال: برنامه با ZeroDivisionError
-│   └── test.py              ← مثال: تست مستقیم tracer
+│   ├── buggy_program.py     ← Example: program with ZeroDivisionError
+│   └── test.py              ← Example: direct tracer test
 ├── tests/
-│   └── test_all.py          ← unit tests کامل
+│   └── test_all.py          ← Full unit tests
 └── logs/
-    └── errors.json          ← خطاهای لاگ‌شده
+    └── errors.json          ← Stored error logs
 ```
 
-## نحوه استفاده
-
+## Usage
 ```bash
-# اجرای ساده
+# Simple run
 python main.py examples/buggy_program.py
 
-# با trace خط‌به‌خط
+# With line-by-line trace
 python main.py examples/buggy_program.py --trace
 
-# با نمایش متغیرها
+# With variable display
 python main.py examples/buggy_program.py --trace --vars
 
-# با بررسی متغیرها در لحظه crash
+# With variable inspection at crash
 python main.py examples/buggy_program.py --inspect
 ```
 
-## اجرای تست‌ها
-
+## Running Tests
 ```bash
 python -m pytest tests/ -v
-# یا
+# or
 python tests/test_all.py
 ```
